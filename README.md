@@ -115,13 +115,13 @@ The quick full-invoice reversal heuristic was also tested by rerunning segmentat
 This sensitivity result suggests the overall cluster structure was very similar under that alternative rule. It does not prove that every cancellation match was correct; the rule remains a documented heuristic.
 
 9. Limitations
-1. Historical and offline data: The transactions cover 2010–2011. Customer behavior and product availability may differ today.
-2. One main temporal holdout: The bootstrap resamples customers within the same test period. The two-window check reuses that holdout and the same training-built recommendation methods; neither is independent validation on a new period.
-3. Eligible-customer subset: The main evaluation includes customers with training history and at least one qualifying new-to-customer product in the test period. Results do not represent every customer, including cold-start users.
-4. Test-period target definition: A product not purchased during the test period is counted as not relevant for this offline test, even though the customer might buy it in another period. In the two-window check, earlier test-window purchases are not added to the history used to exclude already-seen products in the later window.
-5. Heuristic transaction cleaning: The 24-hour full-invoice reversal rule is an approximation; matching transaction signatures does not prove that a purchase was truly reversed.
-6. Co-purchase is not causality: Item-to-item associations identify products purchased together, not why they were purchased together.
-7. No live outcome evidence: We did not run an online A/B test or measure clicks, conversions, incremental revenue, customer satisfaction, operational latency, or production costs.
+  1. Historical and offline data: The transactions cover 2010–2011. Customer behavior and product availability may differ today.
+  2. One main temporal holdout: The bootstrap resamples customers within the same test period. The two-window check reuses that holdout and the same training-built recommendation methods; neither is independent validation on a new period.
+  3. Eligible-customer subset: The main evaluation includes customers with training history and at least one qualifying new-to-customer product in the test period. Results do not represent every customer, including cold-start users.
+  4. Test-period target definition: A product not purchased during the test period is counted as not relevant for this offline test, even though the customer might buy it in another period. In the two-window check, earlier test-window purchases are not added to the history used to exclude already-seen products in the later window.
+  5. Heuristic transaction cleaning: The 24-hour full-invoice reversal rule is an approximation; matching transaction signatures does not prove that a purchase was truly reversed.
+  6. Co-purchase is not causality: Item-to-item associations identify products purchased together, not why they were purchased together.
+  7. No live outcome evidence: We did not run an online A/B test or measure clicks, conversions, incremental revenue, customer satisfaction, operational latency, or production costs.
    
 10. Conclusion
 The project combined PCA and K-Means customer segmentation with three recommendation strategies: global popularity, segment popularity, and item-to-item co-purchase associations. On the evaluated time-based holdout of 1,505 eligible customers, item-to-item associations achieved the highest Precision@10 (4.85%), Recall@10 (3.47%), and Hit Rate@10 (31.63%). Paired-bootstrap 95% confidence intervals for improvements over both popularity baselines were above zero, and the method also ranked first on all three metrics in both halves of the existing test period.
